@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DosroGhar</title>
+    <script src="https://kit.fontawesome.com/61d1b80f50.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+    <link rel="stylesheet" href="{% static 'css/available.css' %}">
+    <link rel="stylesheet" href="{% static 'css/details.css' %}">
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet" >
+    <!-- Add this to your template, e.g., base.html -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="{% static 'bootstrap.bundle.min.js' %}" ></script>
+
+
+</head>
+<body>
+
+<!-- Navigation bar (You can include this in a separate file if you have a common layout) -->
+<!-- -----------header div------------------ -->
+<div class="header-div">
+    <h1 class="brand-heading">DosroGhar</h1>
+    <span class="btns">
+        <a href="{% url 'available_rooms' %}" class="login-btn"><span class="user"><b>Home</b></span></a>
+        <a href="{% url 'about' %}" class="login-btn"><span class="user"><b>About</b></span></a>
+
+        {% if user.is_authenticated %}
+    <!-- If user is logged in -->
+    {% if user.ownerprofile %}
+        <!-- If user has an OwnerProfile, show Owner Dashboard link -->
+        <a href="{% url 'owner_dashboard' %}" class="login-btn"><span class="user"><b>Dashboard</b></span></a>
+    {% elif user.tenantprofile %}
+        <!-- If user has a TenantProfile, show Tenant Dashboard link -->
+        <a href="{% url 'tenant_dashboard' %}" class="login-btn"><span class="user"><b>Dashboard</b></span></a>
+    {% endif %}
+
+    <!-- Always show Logout link -->
+    <a href="{% url 'logout' %}" class="login-btn"><span class="user"><b>Logout</b></span></a>
+{% else %}
+    <!-- If user is not logged in, show Login and Signup links -->
+    <a href="{% url 'login' %}" class="login-btn"><span class="user"><b>Login</b></span></a>
+    <a href="{% url 'choose_user_type' %}" class="login-btn"><span class="user"><b>Signup</b></span></a>
+{% endif %}
+
+    </span>
+</div>
+
+
+
+
+<!-- yeha navigation bar -->
+
+{% block content %}
+
+{% endblock %}
+
+<!-- footer yeha bata start abo -->
+
+<!-- footer-->
+    <div class="container-foot">
+        <div class="container-foot1">
+            <div class="con-foot">
+                <h1 class="heding1-t"> 🏠<span class="tex-red">DosroGhar</span></h1><br /> <br>
+                <span class="color-light">DosroGhar is a web application designed for rental property management. <br>
+                  It facilitates the interaction between property owners, tenants, and administrators in the context of renting accommodations.<br>
+                  Users can sign up as owners to list their properties, providing details such as location, amenities, and pricing.<br>
+                  Prospective tenants can browse available rental listings, search by location and cost, and initiate booking requests.<br>
+                  The admin role involves approving or rejecting property listings and managing bookings. <br><br>
+                  DosroGhar aims to streamline the rental process, enhancing communication and efficiency among property stakeholders.
+                </span>
+            </div class="con-foot">
+        <br>
+
+            <div class="con-foot">
+                <h2 class="heding1-t"> Contact Us</h2><br />
+                <a class="foot-anchor color-light" href="tel:+977 9811686161">Contact: 9811686161</a><br />
+
+
+                <a class="foot-anchor color-light" href=" mailto:mallaprasanna18@gmail.com">Email:
+                    dosroghar@gmail.com</a><br /> <br><br>
+
+                <h2 class="heding1-t "> Connect With us</h2><br /> <br><br>
+
+                <a href="https://www.facebook.com/prasanna.malla.18 "><i class="fa-brands fa-facebook foot-icon"></i></a>
+
+
+                <a class="foot-anchor" href="https://www.instagram.com/prasannna_ma/"><i
+                        class="fa-brands fa-instagram foot-icon"></i></a>
+
+
+
+            </div>
+
+        </div>
+        <div class="fotr-cont">
+            <span class="foot-tex color-light">©2024-2025 <span style="color: #4698e9;">DosroGhar</span> Prasanna Malla and Team</span>
+        </div>
+    </div>

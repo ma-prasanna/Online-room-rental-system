@@ -1,0 +1,20 @@
+<!-- mainapp/templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+    <h2>Available Rooms</h2>
+
+    {% for room in rooms %}
+        <div class="room">
+            <img src="{{ room.image.url }}" alt="{{ room.title }} Image" width="300" height="200">
+
+            <h3>{{ room.title }}</h3>
+            <p><strong>Location:</strong> {{ room.location }}</p>
+            <p><strong>Price:</strong> ${{ room.price }}</p>
+            <p><strong>Amenities:</strong> {{ room.get_amenities_display }}</p>
+
+        </div>
+    {% endfor %}
+{% endblock %}

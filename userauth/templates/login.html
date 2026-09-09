@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|safe }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<div class="log-in-main-contener">
+
+    <div class="main-form">
+        <h2 style="color: #9C640C; text-align: center;">Welcome To DosroGhar. Please Login Here</h2>
+        <div class="log-in-card-1">
+            <br />
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h2>Login</h2><br>
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                <br />
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                <br />
+                {{ form.user_type.label_tag }}
+                {{ form.user_type }}
+                <br /> <br>
+                <input type="submit" value="Login" class="input bold-1 btn-login" />
+                <br /> <br>
+            </form>
+        </div>
+    </div>
+    <div class="log-in-card-2">
+        <img src="{% static 'img.png' %}" class="img-log" />
+    </div>
+</div>
+
+{% endblock %}

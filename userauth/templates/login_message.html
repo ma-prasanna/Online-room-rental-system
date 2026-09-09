@@ -1,0 +1,65 @@
+<!-- templates/login_message.html -->
+{% load static %}
+<style>
+    .login-container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        max-width: 400px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .home-picture {
+        position: absolute;
+        top: 10;
+        left: 10;
+        width: 100%;
+        height: 60%;
+        opacity: 0.2;
+    }
+
+    .login-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #804000;
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
+
+    .login-message {
+        font-size: 16px;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .login-link {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+    }
+   .login-container:hover {
+    background-color:#BEB9B8  ;
+    }
+
+
+</style>
+
+<br>
+
+{% block title %}
+
+
+        <div class="login-title" style="text-align: center;"><h3>Login Required*</h3></div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <h3><p class="login-message">Please <a class="login-link" href="{% url 'login' %}?next={% url 'room_detail_available' room_id=room.id %}">login</a> to view details.</p></h3>
+    </div>
+<img src="{% static 'myhome.jpg' %}" alt="Home Picture" class="home-picture">
+{% endblock %}

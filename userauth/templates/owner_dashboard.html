@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="dashboard-container">
+    <h2>Welcome to Your Dashboard, {{ user.username }}</h2>
+
+    <div class="profile-section">
+      <h3>Your Profile:</h3>
+      <p class="name"><strong>Name:</strong> {{ owner_profile.name }}</p>
+      <p class="number"><strong>Phone Number:</strong> {{ owner_profile.phone_number }}</p>
+      <p class="photo"><strong>Citizenship Photo:</strong><br> <img src="{{ owner_profile.citizenship_photo.url }}" alt="Citizenship Photo" width="300" height="200"></p>
+    </div>
+
+    <div class="rooms-section">
+      <h3>Your Rooms:</h3>
+      <ul class="room-list">
+        {% for room in rooms %}
+          <li class="room-item">
+            {{ room.title }} -
+            <a href="{% url 'room_detail' room_id=room.id %}" class="view-link">View</a>
+            <a href="{% url 'delete_room' room.id %}" class="delete-link">Delete</a>
+
+            <!-- Display button to view room messages -->
+            <form method="get" action="{% url 'room_messages' room_id=room.id %}">
+              <button type="submit" class="view-messages-button">View Room Messages</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+<br>
+      <a href="{% url 'add_room' %}" class="add-room-link">Add Room</a>
+    </div>
+  </div>
+
+  <style>
+    /* CSS styles for the owner dashboard */
+    .dashboard-container {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 55px 10px 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-container h2 {
+  color: #9C640C; /* Heading color */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-section {
+  margin-top: 20px;
+}
+
+.profile-section h3 {
+  color: #009688; /* Sub-heading color */
+  margin-bottom: 10px;
+}
+
+.profile-section p {
+  margin: 8px 0;
+}
+
+/* Style the image within the profile section */
+.profile-section img {
+  max-width: 100%;
+
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+    .room-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .room-item {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    .view-link, .delete-link, .add-room-link, .view-messages-button {
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+    .view-link:hover, .delete-link:hover, .add-room-link:hover, .view-messages-button:hover {
+     filter: brightness(80%);
+  }
+
+    .view-link {
+      background-color: #3498db;
+    }
+
+    .delete-link {
+      background-color: #e74c3c;
+    }
+
+    .add-room-link, .view-messages-button {
+      background-color: #2ecc71;
+    }
+
+
+  </style>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!-- tenant_dashboard.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        .dashboard-container {
+            margin: 20px;
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        .profile-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .profile-info {
+            margin: 10px 0;
+        }
+
+        .profile-photo {
+            width: 220px;
+            height: 170px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <div class="dashboard-container">
+        <h2>Tenant Dashboard</h2>
+        <div class="profile-section">
+            <p class="profile-info"><strong>Name:</strong> {{ tenant_profile.name }}</p>
+            <p class="profile-info"><strong>Address:</strong> {{ tenant_profile.address }}</p>
+            <p class="profile-info"><strong>Phone Number:</strong> {{ tenant_profile.phone_number }}</p>
+            {% if tenant_profile.photo %}
+             <p><b>Your Photo</b></p>  <img class="profile-photo" src="{{ tenant_profile.photo.url }}" alt="Tenant Photo">
+            {% else %}
+                <p>No photo available</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

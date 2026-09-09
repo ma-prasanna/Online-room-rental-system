@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- choose type of owner usre -->
+    <div class="d-flex choose-maindiv1">
+        <div class="choose-maindiv mt-100">
+            <img src="{% static 'homeimg.png' %}" /> <br><br>
+            <h2>Signup to DosroGhar</h2>
+        </div>
+        <div class="choose-maindiv choos-bg">
+            <h2>Choose type of User</h2> <br><br>
+            <img class="owner-img" src="{% static 'owner.png' %}" />
+            <span class="mt-20">Owner <a class="choos-acker" href="{% url 'owner_signup' %}"> &#8594; </a>
+                <br><br></span>
+            <img class="owner-img" src="{% static 'programmer.png' %}" />
+            <span class="mt-20"></span> Tenant <a class="choos-acker" href="{% url 'tenant_signup' %}"> &#8594; </a>
+            <br><br></span>
+        </div>
+    </div>
+
+{% endblock %}

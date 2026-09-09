@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="details">
+  <h2 style="color:#9C640C; text-align:center;">{{ room.title }}</h2>
+
+  <!-- Display other room details -->
+  <p><strong>Number of Rooms:</strong> {{ room.no_of_room }}</p>
+  <p><strong>Number of Bathrooms:</strong> {{ room.no_of_bathroom }}</p>
+  <p><strong>Number of Halls:</strong> {{ room.no_of_hall }}</p>
+  <p><strong>Location:</strong> {{ room.location }}</p>
+  <p><strong>Price:</strong> NRs.{{ room.price }}</p>
+
+  <!-- Display amenities using a loop -->
+  <p><strong>Amenities:</strong></p>
+  <ul>
+  {% for amenity in amenities %}
+    <li>{{ amenity.name }}</li>
+  {% endfor %}
+  </ul>
+
+  <!-- Display uploaded images -->
+    {% if room.room_photo %}
+      <div class="image-cont">
+      <img src="{{ room.room_photo.url }}" alt="Room Photo" width="850" height="550">
+      <h3 style="color: green;text-align: center;"><strong>Room</strong></h3>
+        </div>
+    {% endif %}
+
+    {% if room.hall_photo %}
+        <div class="image-cont">
+    <img src="{{ room.hall_photo.url }}" alt="Hall Photo" width="850" height="550">
+      <h3 style="color: green;text-align: center;"><strong>Hall</strong></h3>
+          </div>
+
+  {% endif %}
+
+  {% if room.kitchen_photo %}
+          <div class="image-cont">
+    <img src="{{ room.kitchen_photo.url }}" alt="Kitchen Photo" width="850" height="550">
+  <h3 style="color: green;text-align: center;"><strong>Kitchen</strong></h3>
+            </div>
+  {% endif %}
+
+  {% if room.bathroom_photo %}
+            <div class="image-cont">
+    <img src="{{ room.bathroom_photo.url }}" alt="Bathroom Photo" width="850" height="550">
+  <h3 style="color: green;text-align: center;"><strong>Bathroom</strong></h3>
+              </div>
+  {% endif %}
+
+  {% if room.parking_area_photo %}
+              <div class="image-cont">
+    <img src="{{ room.parking_area_photo.url }}" alt="Parking Area Photo" width="850" height="550">
+  <h3 style="color: green;text-align: center;"><strong>Parking</strong></h3>
+                </div>
+  {% endif %}
+
+
+
+{% if room.latitude and room.longitude %}
+  <h3>Location:</h3>
+  <div id="map" style="height: 500px;"></div>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var map = L.map('map').setView([{{ room.latitude }}, {{ room.longitude }}], 19);
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© Dosroghar'
+          }).addTo(map);
+
+          L.marker([{{ room.latitude }}, {{ room.longitude }}]).addTo(map);
+      });
+  </script>
+</div>
+{% endif %}
+  <!-- Add more details as needed -->
+
+  <!-- Provide a link back to the owner's dashboard -->
+<br>
+  <a href="{% url 'owner_dashboard' %}" class="back">Back to Dashboard</a>
+
+<style>
+
+  /* CSS styles for the owner dashboard */
+
+.details{
+background-color: #f8f9fa; /* Light background color */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 55px 10px 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+    .send{
+    background-color: #2ecc71;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+    .back{
+      background-color: #e74c3c;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+  .send:hover, .back:hover {
+     filter: brightness(80%);
+    }
+
+    /* Add your existing CSS styles here */
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.room-detail {
+  margin-bottom: 8px;
+}
+
+.amenities-list {
+  list-style-type: square;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.owner-detail {
+  margin-bottom: 8px;
+}
+
+/* Additional styling for links */
+a {
+  color: #007BFF; /* Link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Add your additional styles as needed */
+
+/* Example: Centering the content */
+.add-room-container {
+  text-align: center;
+}
+
+</style>
+
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Room Confirmation</h2>
+
+  <p>Are you sure you want to delete the room "{{ room.title }}"?</p>
+
+  <form method="post" action="{% url 'delete_room' room.id %}">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete Room</button>
+  </form>
+
+  <a href="{% url 'owner_dashboard' %}">Cancel</a>
+{% endblock %}

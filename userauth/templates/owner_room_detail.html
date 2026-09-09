@@ -1,0 +1,19 @@
+<!-- templates/owner_room_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Room Details</h2>
+  <h3>{{ room.title }}</h3>
+  <img src="{{ room.room_image.url }}" alt="Room Image" width="400" height="300">
+  <p>Location: {{ room.location }}</p>
+
+  <h2>Owner Details</h2>
+  <p>Owner: {{ owner_profile.user.username }}</p>
+  <p>Email: {{ owner_profile.user.email }}</p>
+  <p>Phone: {{ owner_profile.phone_number }}</p>
+
+  <!-- Add more room and owner details as needed -->
+
+  <!-- Add a back button to go back to the list of available rooms -->
+  <a href="{% url 'available_rooms' %}">Back to Available Rooms</a>
+{% endblock %}

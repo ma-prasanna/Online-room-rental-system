@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="log-in-main-contener">
+        <div class="main-form">
+            <div class="log-in-card-1">
+                <br />
+                <form>
+                    <h2>Login</h2>
+                    <input type="text" placeholder="Enter Your Name" class="input" required /><br />
+                    <input type="tel" placeholder="Enter Mobile No" class="input" required /><br />
+                    <input type="text" placeholder="Enter Address" class="input" required /><br />
+                    <input type="email" placeholder="Enter Email" class="input" required /><br /> <br>
+                    <input type="submit" value="Login" required class="input bold-1 btn-login" /><br /> <br>
+
+                </form>
+            </div>
+        </div>
+        <div class="log-in-card-2">
+            <img src="{% static 'img.png' %}" class="img-log" />
+        </div>
+    </div>
+
+{% endblock %}

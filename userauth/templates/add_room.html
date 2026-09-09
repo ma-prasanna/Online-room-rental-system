@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="add-room-container" style="background-color: ##FEFBFA;">
+    <br>
+  <h2 class="stylish-heading">Add a New Room</h2>
+
+  <form method="post" action="{% url 'add_room' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <!-- Example: Display uploaded images -->
+    <div class="uploaded-images">
+    {% if form.instance.room_photo %}
+      <img src="{{ form.instance.room_photo.url }}" alt="Room Photo" title="Visible for Main Webpage Photo">
+    {% endif %}
+
+    {% if form.instance.hall_photo %}
+      <img src="{{ form.instance.hall_photo.url }}" alt="Hall Photo">
+    {% endif %}
+
+    {% if form.instance.kitchen_photo %}
+      <img src="{{ form.instance.kitchen_photo.url }}" alt="Kitchen Photo">
+    {% endif %}
+
+    {% if form.instance.bathroom_photo %}
+      <img src="{{ form.instance.bathroom_photo.url }}" alt="Bathroom Photo">
+    {% endif %}
+
+    {% if form.instance.parking_area_photo %}
+      <img src="{{ form.instance.parking_area_photo.url }}" alt="Parking Area Photo">
+    {% endif %}
+      </div>
+
+
+    <!-- add_room.html -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var map = L.map('map').setView([28.0500, 81.6167], 15); // Set the initial view to Nepalgunj
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© Prasanna Dosroghar'
+    }).addTo(map);
+
+     var marker = L.marker([28.0500, 81.6167], { draggable: true }).addTo(map); // Set initial marker position to Nepalgunj
+
+    map.on('click', function(e) {
+        var latlng = e.latlng;
+        marker.setLatLng(latlng);
+        document.getElementById('id_latitude').value = latlng.lat.toFixed(6);
+        document.getElementById('id_longitude').value = latlng.lng.toFixed(6);
+    });
+
+    // Add the geocoder control
+    L.Control.geocoder().addTo(map);
+});
+
+
+</script>
+
+<div id="map" style="height: 500px;"></div>
+
+
+     <button type="submit" class="submit-button">Add Room</button>
+  </form>
+  <br>
+  <a href="{% url 'owner_dashboard' %}" class="back-linnk">Back to Dashboard</a>
+    </div>
+
+
+<style>
+  /* Styling for the container */
+.add-room-container {
+  padding: 10px;
+  margin: 30px 40px 18px 45px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+   .submit-button{
+    background-color: #2ecc71;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+    .back-linnk{
+      background-color: #e74c3c;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+  .submit-button:hover, .back-linnk:hover {
+     filter: brightness(80%);
+    }
+
+  h2.stylish-heading {
+  color: #9C640C;
+  background-color: #F9EAE7; /* Light background color that complements the text color */
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  padding: 10px 20px; /* Add some padding for a better look */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+{% endblock %}

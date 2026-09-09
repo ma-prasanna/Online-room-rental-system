@@ -1,0 +1,214 @@
+<!-- templates/room_detail_available.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+{% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+<div class="room_12">
+  {% if user.is_authenticated %}
+    <h2 style="text-align: center; color:#9C640C"><u>{{ room.title }}</u></h2>
+
+ <!-- Display map if latitude and longitude are provided -->
+    {% if room.latitude and room.longitude %}
+<h3>Location:</h3>
+<div id="map" style="height: 500px;"></div>
+
+<style>
+    .custom-tooltip-content {
+        color: red;
+        font-size: 12px;
+        font-style: italic;
+            }
+    .custom-tooltip-content:hover{
+        color: yellow;
+        font-size: 20px;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var map = L.map('map').setView([{{ room.latitude }}, {{ room.longitude }}], 17);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© Dosroghar'
+        }).addTo(map);
+
+        L.marker([{{ room.latitude }}, {{ room.longitude }}]).addTo(map);
+
+        var tooltip = L.tooltip({ permanent: true, direction: 'left', className: 'leaflet-tooltip' })
+            .setContent('<div class="custom-tooltip-content">This is Room</div>')
+            .setLatLng([{{ room.latitude }}, {{ room.longitude }}])
+            .addTo(map);
+
+
+            // Apply transparent background to the tooltip content
+        tooltip.getElement().style.backgroundColor = 'transparent';
+    });
+</script>
+{% endif %}
+
+
+    <!-- Display uploaded images -->
+    {% if room.room_photo %}
+      <div class="image-cont">
+      <img src="{{ room.room_photo.url }}" alt="Room Photo" width="850" height="550">
+      <h3 style="color: green;text-align: center;"><strong>Room</strong></h3>
+        </div>
+    {% endif %}
+
+    {% if room.hall_photo %}
+        <div class="image-cont">
+    <img src="{{ room.hall_photo.url }}" alt="Hall Photo" width="850" height="550">
+      <h3 style="color: green;text-align: center;"><strong>Hall</strong></h3>
+          </div>
+
+  {% endif %}
+
+  {% if room.kitchen_photo %}
+          <div class="image-cont">
+    <img src="{{ room.kitchen_photo.url }}" alt="Kitchen Photo" width="850" height="550">
+  <h3 style="color: green;text-align: center;"><strong>Kitchen</strong></h3>
+            </div>
+  {% endif %}
+
+  {% if room.bathroom_photo %}
+            <div class="image-cont">
+    <img src="{{ room.bathroom_photo.url }}" alt="Bathroom Photo" width="850" height="550">
+  <h3 style="color: green;text-align: center;"><strong>Bathroom</strong></h3>
+              </div>
+  {% endif %}
+
+  {% if room.parking_area_photo %}
+              <div class="image-cont">
+    <img src="{{ room.parking_area_photo.url }}" alt="Parking Area Photo" width="850" height="550">
+  <h3 style="color: green;text-align: center;"><strong>Parking</strong></h3>
+                </div>
+  {% endif %}
+    <!-- Add more details as needed -->
+
+
+
+  <!-- Display other room details -->
+<br>
+<h2 class="section-title" style="color: #9C640C;">Brief Details of Room</h2>
+
+<p class="room-detail"><strong>Number of Rooms:</strong> {{ room.no_of_room }}</p>
+<p class="room-detail"><strong>Number of Bathrooms:</strong> {{ room.no_of_bathroom }}</p>
+<p class="room-detail"><strong>Number of Halls:</strong> {{ room.no_of_hall }}</p>
+<p class="room-detail"><strong>Location:</strong> {{ room.location }}</p>
+<p class="room-detail"><strong>Price:</strong> NRs.{{ room.price }}</p>
+
+<!-- Display amenities using a loop -->
+<p class="room-detail"><strong>Amenities:</strong></p>
+<ul class="amenities-list">
+  {% for amenity in amenities %}
+    <li>{{ amenity.name }}</li>
+  {% endfor %}
+</ul>
+
+<!-- Display Owner information -->
+<h2 class="section-title" style="color: #9C640C;">Owner Details</h2>
+<p class="owner-detail"><strong>Name:</strong> {{ owner_profile.name }}</p>
+<p class="owner-detail"><strong>Phone Number:</strong> {{ owner_profile.phone_number }}</p>
+<p class="owner-detail"><strong>E-mail Address:</strong> {{ owner_profile.email }}</p>
+<br>
+
+
+
+{% if user.is_authenticated %}
+    <h2 style="color: #9C640C ;">Chat with Owner</h2>
+    <form method="post" action="{% url 'send_message' room_id=room.id %}">
+        {% csrf_token %}
+        <textarea name="content" rows="4" cols="50" placeholder="Type your message here..."></textarea>
+        <br>
+        <input type="hidden" name="owner_email" value="{{ room.email }}">
+        <button type="submit" class="send">Send</button>
+    </form>
+{% endif %}
+  <!-- Provide a link back to the owner's dashboard -->
+<br>
+    <a href="{% url 'available_rooms' %}" class="back">Back to Available Room</a>
+   {% else %}
+    {% include 'login_message.html' %}
+  {% endif %}
+</div>
+
+
+  <style>
+    /* CSS styles for the owner dashboard */
+
+.room_12{
+margin: 30px;
+}
+    .send{
+    background-color: #2ecc71;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+    .back{
+      background-color: #e74c3c;
+      text-decoration: none;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-top: 15px;
+    }
+
+  .send:hover, .back:hover {
+     filter: brightness(80%);
+    }
+
+    /* Add your existing CSS styles here */
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.room-detail {
+  margin-bottom: 8px;
+}
+
+.amenities-list {
+  list-style-type: square;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.owner-detail {
+  margin-bottom: 8px;
+}
+
+/* Additional styling for links */
+a {
+  color: #007BFF; /* Link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Add your additional styles as needed */
+
+/* Example: Centering the content */
+.add-room-container {
+  text-align: center;
+}
+
+
+  </style>
+
+{% endblock %}

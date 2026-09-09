@@ -1,0 +1,568 @@
+
+body {
+    margin-top: 40px;
+    padding:3px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  .d-flex {
+     display: flex;
+     flex-wrap: wrap;
+  }
+  .color-lired{
+     color: #fc0d15;
+  }
+  .color-lired:hover{
+     color: #181717;
+  }
+
+    /* .heding1-t{
+     display: inline-block;
+    } */
+    .heding1-t{
+    margin-top: 0px;
+    }
+
+   .heading-2{
+    text-align: center;
+    margin-bottom: -10px;
+    margin-top: 0px;
+   }
+
+   /*start navbar */
+
+   * {
+     margin: 0%;
+  }
+
+
+  .brand-heading {
+     color: #d8232a;
+     margin-left: 20px;
+
+     margin-top: auto;
+     margin-bottom: auto;
+  }
+
+  /* -----------header------------  */
+  .header-div {
+     display: flex;
+     height: 44px;
+     position: fixed;
+     width: 100%;
+     z-index: 1000;
+     top: 0;
+    background-color: #FFF5F3    ;
+    border: 1px solid #FFF5F3  ; /* Adjust border properties */
+  }
+
+  .brand-heading {
+     color: #d8232a;
+     margin-left: 20px;
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     margin-top: auto;
+     margin-bottom: auto;
+  }
+
+  .btns {
+     margin-left: auto;
+     margin-right: 20px;
+     margin-top: 10px;
+  }
+
+  .login-btn {
+     background-color: #FFF5F3    ;
+     padding: 10px;
+     border: none;
+     text-decoration: none;
+     color: black;
+
+  }
+
+  .user {
+     font-size: 15px;
+
+     box-sizing: border-box;
+     position: relative;
+     background-blend-mode: darken;
+     padding: 20px;
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  .user:hover {
+     color: crimson;
+     transform: scale(1.1);
+     z-index: 2;
+  }
+
+  /* -----navbar------------------ */
+  nav {
+     height: 60px;
+     background-color: #d8232a;
+     display: flex;
+     justify-content: center;
+     position: sticky;
+     top: 0;
+     width: 100%;
+  }
+
+  .selects {
+     margin-top: 13px;
+     background: none;
+
+  }
+
+  .select-budget {
+     cursor: pointer;
+     border: none;
+     height: 35px;
+     width: 90px;
+     border: solid 1px #d8232a;
+     border-radius: 30px;
+     font-size: 15px;
+     padding-left: 10px;
+     padding-right: 5px;
+     margin-right: 10px;
+     background-color: white;
+
+  }
+
+  .property-type {
+     cursor: pointer;
+     border: none;
+     height: 35px;
+     width: 135px;
+     border: solid 1px #d8232a;
+     border-radius: 30px;
+     font-size: 15px;
+     padding-left: 10px;
+     padding-right: 5px;
+     margin-right: 10px;
+     background-color: white;
+  }
+
+  .select-posted-by {
+     cursor: pointer;
+     border: none;
+     height: 35px;
+     width: 115px;
+     border: solid 1px #d8232a;
+     border-radius: 30px;
+     font-size: 15px;
+     padding-left: 10px;
+     padding-right: 5px;
+     margin-right: 10px;
+     background-color: white;
+  }
+
+  .select-bhk {
+     cursor: pointer;
+     border: none;
+     height: 35px;
+     width: 70px;
+     border: solid 1px #d8232a;
+     border-radius: 30px;
+     font-size: 15px;
+     padding-left: 10px;
+     margin-right: 10px;
+     padding-right: 5px;
+     background-color: white;
+  }
+.button.hehe {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button.hehe:hover {
+    background-color: #0056b3;
+}
+
+
+
+  /* -------------------category-container----------------------- */
+  .category-container {
+     height: 500px;
+  }
+
+  /* --------------------media query mobile device---------------- */
+  @media screen and (max-width: 750px) {
+     .brand-heading {
+        color: #d8232a;
+        margin-left: 4%;
+     }
+     .btns{
+        display: none;
+     }
+  nav{
+  display: none;
+  }
+  .div-poster {
+     background-image: url(/img/poster5.jpg);
+     height: 450px;
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     text-align: center;
+
+  }
+
+
+
+  .hel-1 {
+     color: white;
+     font-size: 30px;
+     margin-top: 0%;
+     position: relative;
+     top: -50px;
+
+  }
+
+  .header-btn {
+     display: flex;
+     flex-direction: column;
+     margin-top: 5%;
+
+  }
+
+  .post-text {
+     font-size: 15px;
+     font-weight: bold;
+  }
+  .update-btn {
+     height: 40px;
+     width: 200px;
+     border-radius: 50px;
+     background-color: #d8232a;
+     color: white;
+     margin-top: 15px;
+     box-shadow: 10px 10px 10px 2px black;
+     border-radius: 50px;
+
+  }
+
+  .rent-collection{
+   width: 90%;
+  }
+  .furni-div{
+   width: 100%;
+  }
+  .furnished-img{
+   width: 100%;
+  }
+
+  }
+
+  /* choose type owner user */
+
+  .owner-img{
+   height: 60px;
+   margin-bottom: -15px;
+  }
+  .choose-maindiv{
+   margin: 50px;
+   /* border: 2px solid black; */
+  }
+  .choose-maindiv1{
+   /* border: 2px solid black; */
+   padding: 30px;
+   width: 70%;
+   border-radius: 10px;
+   margin-left:auto;
+   margin-right: auto;
+   margin-top: 50px;
+   background-color: #FFF5E4;
+  }
+  .choos-bg{
+   background-color: white;
+   width:410px;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 1px 10px 0 rgb(167, 166, 166);
+   cursor: pointer;
+  }
+  .mt-100{
+   margin-top: 100px;
+  }
+  .mt-20{margin-left: 20px;
+}
+.choos-acker{
+   text-decoration: none;
+font-size: 50px;
+margin-left: 200px;
+color: #555454;
+
+}
+.choos-acker:hover{color: #d8232a;
+margin-left: 220px;}
+
+/* Heading ko lagi */
+.dosroghar-link {
+    text-decoration: none; /* Remove underlines from the link */
+    color: inherit; /* Inherit the color from the parent */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+    /*curated rental collection*/
+
+
+  .heding1-t {
+     display: inline-block;
+  }
+
+
+
+  .heading-2 {
+     text-align: center;
+     margin-bottom: -10px;
+     margin-top: 60px;
+  }
+
+  .rent-collection {
+     background-image: url(./../img/index-page-img/forfamily.webp);
+     background-size: 100%;
+     height: 295px;
+     width: 500px;
+     padding: 0px;
+     margin: 50px;
+     border: 2px solid #d8232a;
+     padding-top: 38px;
+     border-radius: 5px;
+  }
+
+  .rent-collection:hover {
+   cursor: pointer;
+   background-size: 105%;
+   box-shadow: 0 2px 20px 0  rgb(87, 87, 87);;
+  }
+
+  .bg-1 {
+     background-image: url(./../img/index-page-img/singlemen.webp);
+  }
+
+  .bg-2 {
+     background-image: url(./../img/index-page-img/singlewomen.webp);
+  }
+
+  .bg-3 {
+     background-image: url(./../img/index-page-img/tanlentwithcompany.webp);
+  }
+
+  .forfamily-tex {
+     text-decoration: none;
+     font-size: 20px;
+     margin-left: 40px;
+
+     color: #d8232a;
+    }
+    .ml-30{ margin-left: 40px;}
+    .ta-center{display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;}
+
+
+   /* poster 2 */
+
+   .misco-img{
+      height: 450px;
+      /* border: 2px solid #d8232a; */
+   }
+   .poster-subdiv{
+   margin-top:100px ;
+   /* border: 1px solid black; */
+   }
+   .poster2-main{
+      background-color: rgb(249, 246, 238);
+   }
+   .btn-listyouspace{
+      padding: 10px;
+      color: white;
+      background-color: #d8232a;
+      border-radius: 5px;
+      border: 2px solid #d8232a;
+      border-radius: 30px;
+      font-weight: bold;
+      /* margin-left:230px; */
+      width: 200px;
+   }
+   .btn-listyouspace:hover{
+      color: #d8232a;
+      border: 2px solid #d8232a;
+      background-color: white;
+   }
+
+
+
+/* home by furnished */
+   .mt-60{margin-top: 60px;}
+   .furnished-img{
+      width: 100%;
+     border-radius: 10px;
+   }
+
+   .furni-div{
+      width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin: 20px;
+        margin-top: 40px;
+        border-radius:10px;
+        border-radius:5px;
+        padding-bottom: 10px;
+        margin-bottom: 50px;
+      }
+        .furni-div:hover{
+           box-shadow: 0 2px 20px 0 rgb(87, 87, 87);
+           cursor: pointer;
+           border-radius: 10px;
+        }
+
+    .firni-anchor{
+        text-decoration: none;
+        font-size: 20px;
+        color: rgb(81, 82, 82);
+        margin-left: 10px;
+
+      }
+    .firni-anchor:hover{color: #d8232a;}
+
+    .d-flex{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    .heald-card{
+       text-align:center;
+       color: rgb(91, 87, 106);
+    }
+
+    /* posterin */
+   .poster-main{background-color: #efeeee;}
+   .poster1-img{
+    width: 500px;
+
+    margin-top: 30px;
+   }
+   .findmyroom-tex{
+      width: 500px;
+
+    padding: 30px;
+   }
+  .poster-tex{
+    font-size: 20px;
+  }
+   /* why use nobrocker */
+   .div-nobrocker{
+     text-align: center;
+     margin-bottom: 30px;
+     width: 200px;
+    border-radius: 10px;
+    padding: 20px;
+   }
+   .div-nobrocker:hover{
+     box-shadow: 0 2px 20px 0 rgb(87, 87, 87);
+     cursor: pointer;
+   }
+   .tex-size{font-size: 20px;}
+   .tex-light{color: #555454;}
+   .d-flex-cen{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content:space-evenly;
+     margin-bottom: 50px;
+   }
+   .heading-3{
+      text-align: center;
+   }
+
+
+   /* our coustmars loves us */
+
+   .tex-span1{
+     color: rgb(110, 111, 111);
+  }
+  .flex-1{
+     display: flex;
+     flex-direction: row ;
+   }
+   .img-man{
+      height: 50px;
+      border-radius: 50%;
+   }
+  .flex-2{
+      margin-left: 20px;
+  }
+  .box-1{
+      width: 400px;
+      border: 2px solid rgb(239, 16, 16);
+      padding: 20px;
+      padding-bottom: 0px;
+      margin: 30px;
+      padding: 10px;
+  }
+  .col-yello{
+     color: gold;
+   }
+
+   div.scroll-container {
+      background-color: #fefcfc;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+  margin-left: 30px;
+  margin-right: 50px;
+  margin-bottom: 60px;
+}
+.d-flex-1{
+   display: flex;
+}
+
+
+    /*footer*/
+    .container-foot1{
+       display: flex;
+       flex-direction: row;
+       justify-content:space-around;
+       flex-wrap: wrap;
+       background-color: #f5f5f5;
+       padding-top: 80px;
+       padding-bottom: 80px;
+      }
+      .container-foot{background-color: #f5f5f5;
+     padding-bottom: 50px;}
+      .foot-icon{
+       font-size: 30px;
+       margin-left: 10px;
+       color: #d8232a;
+      }
+      .foot-anchor{
+       text-decoration: none;
+      }
+      .color-light{
+       color: #666565;
+      }
+      .fotr-cont{
+         text-align: center;
+
+      }
+      .tex-red{color:#d8232a ;}
+      .con-foot{
+
+         padding: 50px;
+
+      }
+
+      @media screen and ( min-width:360px ) and ( max-width: 668px)
+       {
+         .rent-collection{
+            height: 200px;
+            width: 80%;
+         }
+         .furnished-img{
+            width: 80%;
+         }
+         .poster1-img{
+            width: 100%;}
+      }

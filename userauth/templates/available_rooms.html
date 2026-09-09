@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Available Rooms{% endblock %}
+
+{% block content %}
+    <div class="div-poster" style="background-image: url('{% static "poster.png" %}');">
+    <h1 class="hel-1">"Find Home, Find Happiness."</h1>
+    <!-- Add this to your HTML form -->
+    <form method="get" action="{% url 'available_rooms' %}">
+        <div class="inputBox">
+            <input type="text" class="in-1" name="location" placeholder="Search Room Location">
+            <button class="btn-search" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search
+            </button>
+        </div>
+    </form>
+</div>
+
+    <br><br>
+
+    <h1 class="heald-card">Find Your Rooms</h1>
+    <div class="d-flex">
+        {% for room in rooms|dictsort:"price" %}
+            <div class="rk1-div">
+                <img class="rk1-img" src="{{ room.room_photo.url }}" /><br>
+                <div class="rk1-divsub">
+                    <span class="rk1-span"><b>{{ room.title }}</b></span> <br> <br>
+                    <span class="color-light">Location: {{ room.location }}</span> <br>
+                    <span><span class="color-light">Price:</span> NRs. {{ room.price }} </span><br><br>
+                    <a class="rk1-anchor color-lired" href="{% url 'room_detail_available' room_id=room.id %}">SHOW MORE</a> <br>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

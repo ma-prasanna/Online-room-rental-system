@@ -1,0 +1,36 @@
+  <br>
+ <h2 style="color: #9C640C; text-align: center;">Owner Signup</h2><br>
+<form method="post" action="{% url 'owner_signup' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <!-- Username -->
+  {{ form.username.label_tag }}
+  <input type="text" name="username" placeholder="Required.Letters, digits and @/./+/-/_ only."  required>
+
+  <!-- Name -->
+  {{ form.name.label_tag }}
+  <input type="text" name="name" placeholder="Your Full Name" required>
+
+  <!-- Email -->
+  {{ form.email.label_tag }}
+  <input type="email" name="email" placeholder="Your Email Address" required>
+
+   <!-- number -->
+  {{ form.phone_number.label_tag }}
+  <input type="number" name="number" placeholder=" Enter a valid 10-digit phone number" required>
+
+  <!-- Password -->
+  {{ form.password1.label_tag }}
+  <input type="password" name="password1" placeholder="Your password must contain at least 8 characters & can’t be a commonly used password." required>
+
+  <!-- Password Confirmation -->
+  {{ form.password2.label_tag }}
+  <input type="password" name="password2" placeholder="Enter the same password as before, for verification" required>
+
+  <!-- Citizenship Photo -->
+  {{ form.citizenship_photo.label_tag }}
+  <input type="file" name="citizenship_photo" placeholder="Upload Citizenship Photo" required>
+
+  <button type="submit">Signup</button>
+</form>
+<br>
